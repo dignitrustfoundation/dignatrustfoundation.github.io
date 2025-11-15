@@ -325,5 +325,23 @@
 			</div>
 		</div>
 		<script src="assets/main.js"></script>
-	</body>
+	
+<section id="staking-section" class="section">
+  <header><h2>Stake DGN</h2></header>
+  <div class="content">
+    <p>Connect your wallet to stake your DGN tokens.</p>
+    <button id="connectWalletBtn">Connect Wallet</button>
+    <div id="stakingUI" style="display:none;">
+      <p>Your DGN Balance: <span id="dgnBalance">0</span></p>
+      <p>Staked: <span id="stakedAmount">0</span></p>
+      <input id="stakeAmount" placeholder="Amount to stake"/>
+      <button id="stakeBtn">Stake</button>
+      <button id="unstakeBtn">Unstake</button>
+      <p>Rewards: <span id="rewards">0</span></p>
+      <button id="claimBtn">Claim Rewards</button>
+    </div>
+  </div>
+</section>
+
+</body>
 </html>
