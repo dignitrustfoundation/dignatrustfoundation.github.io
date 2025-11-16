@@ -2788,3 +2788,59 @@ document.getElementById("connectWalletBtn").onclick = async () => {
   await window.ethereum.request({ method: 'eth_requestAccounts' });
   initStaking();
 };
+
+// Burger Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+	const burgerBtn = document.getElementById('burger-menu-btn');
+	const desktopMenu = document.getElementById('buttons08');
+	const mobileMenu = document.getElementById('buttons07');
+	
+	if (burgerBtn) {
+		// Initially hide the menus on mobile
+		if (window.innerWidth <= 980) {
+			if (desktopMenu) desktopMenu.classList.add('menu-hidden');
+			if (mobileMenu) mobileMenu.classList.add('menu-hidden');
+		}
+		
+		burgerBtn.addEventListener('click', function() {
+			const isExpanded = this.getAttribute('aria-expanded') === 'true';
+			this.setAttribute('aria-expanded', !isExpanded);
+			this.classList.toggle('active');
+			
+			// Toggle both menus
+			if (desktopMenu) desktopMenu.classList.toggle('menu-hidden');
+			if (mobileMenu) mobileMenu.classList.toggle('menu-hidden');
+		});
+		
+		// Close menu when clicking on a menu item
+		const allMenuItems = [];
+		if (desktopMenu) allMenuItems.push(...desktopMenu.querySelectorAll('a'));
+		if (mobileMenu) allMenuItems.push(...mobileMenu.querySelectorAll('a'));
+		
+		allMenuItems.forEach(item => {
+			item.addEventListener('click', function() {
+				if (window.innerWidth <= 980) {
+					burgerBtn.classList.remove('active');
+					burgerBtn.setAttribute('aria-expanded', 'false');
+					if (desktopMenu) desktopMenu.classList.add('menu-hidden');
+					if (mobileMenu) mobileMenu.classList.add('menu-hidden');
+				}
+			});
+		});
+		
+		// Handle window resize
+		window.addEventListener('resize', function() {
+			if (window.innerWidth > 980) {
+				if (desktopMenu) desktopMenu.classList.remove('menu-hidden');
+				if (mobileMenu) mobileMenu.classList.remove('menu-hidden');
+				burgerBtn.classList.remove('active');
+				burgerBtn.setAttribute('aria-expanded', 'false');
+			} else {
+				if (!burgerBtn.classList.contains('active')) {
+					if (desktopMenu) desktopMenu.classList.add('menu-hidden');
+					if (mobileMenu) mobileMenu.classList.add('menu-hidden');
+				}
+			}
+		});
+	}
+});
