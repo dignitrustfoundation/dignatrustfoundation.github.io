@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Digna Dashboard</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="color-scheme" content="light only" />
+		<meta name="description" content="Digna Dashboard - Manage your DGN tokens" />
+		<meta property="og:site_name" content="Digna Dashboard" />
+		<meta property="og:title" content="Digna Dashboard" />
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="Digna Dashboard - Manage your DGN tokens" />
+		<link href="https://fonts.googleapis.com/css2?display=swap&family=Inter:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Sora:ital,wght@0,500;0,700;1,500;1,700" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="assets/images/favicon.png" />
+		<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+		<link rel="stylesheet" href="assets/dashboard.css" />
+		<script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js"></script>
+	</head>
+	<body>
+		<!-- Single Unified Navigation Bar -->
+		<nav class="dashboard-nav">
+			<div class="nav-container">
+				<a href="dashboard.html" class="nav-btn active">Dashboard</a>
+				<a href="#staking" class="nav-btn">Staking</a>
+				<a href="assets/Digna_Whitepaper.pdf" class="nav-btn" target="_blank">Whitepaper</a>
+				<a href="index.html#contact" class="nav-btn">Contact</a>
+			</div>
+		</nav>
+
+		<!-- Dashboard Header -->
+		<div class="dashboard-header">
+			<h1 class="dashboard-title">Digna Dashboard</h1>
+			<div class="header-separator"></div>
+		</div>
+
+		<!-- Main Dashboard Content -->
+		<div class="dashboard-container">
+			<!-- Wallet Section -->
+			<div class="dashboard-card">
+				<h2 class="card-title">Wallet Status</h2>
+				<div class="card-content">
+					<p class="wallet-address" id="walletAddressDisplay">Not connected</p>
+					<p class="wallet-balance">DGN Balance: <span id="dgnBalance">0</span></p>
+					<button id="connectWallet" class="action-btn connect-btn">Connect Wallet</button>
+				</div>
+			</div>
+
+			<!-- Staking Section -->
+			<div class="dashboard-card" id="staking">
+				<h2 class="card-title">Staking</h2>
+				<div class="card-content">
+					<div class="staking-info">
+						<div class="info-row">
+							<span class="info-label">Staked:</span>
+							<span class="info-value" id="userStaked">0 DGN</span>
+						</div>
+						<div class="info-row">
+							<span class="info-label">Rewards:</span>
+							<span class="info-value" id="userRewards">0 DGN</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Quick Actions Section -->
+			<div class="dashboard-card">
+				<h2 class="card-title">Quick Actions</h2>
+				<div class="card-content">
+					<div id="stakingPanel" class="staking-panel hidden">
+						<input id="stakeAmount" class="staking-input" type="number" placeholder="Amount to stake" step="0.01" min="0" />
+						<div class="action-buttons">
+							<button id="stakeBtn" class="action-btn stake-btn">Stake</button>
+							<button id="unstakeBtn" class="action-btn unstake-btn">Unstake</button>
+						</div>
+						<button id="claimBtn" class="action-btn claim-btn">Claim Rewards</button>
+					</div>
+					<div id="connectPrompt" class="connect-prompt">
+						<p>Connect your wallet to access staking features</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="assets/dashboard.js"></script>
+	</body>
+</html>
